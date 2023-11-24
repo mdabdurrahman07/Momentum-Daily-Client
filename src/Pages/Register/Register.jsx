@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import UseAuth from "../../Hooks/UseAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import registerSvg from '../../assets/svg/registerSVG/undraw_newspaper_re_syf5.svg'
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
+import './register.css'
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
     const navigate = useNavigate()
@@ -11,6 +13,8 @@ const Register = () => {
     const { register, handleSubmit , reset } = useForm();
   const onSubmit = data => {
     console.log(data);
+    const name = data?.name
+    const img = data?.img
     const email = data?.email
     const password = data?.pass
     if(password.length < 6){
@@ -29,6 +33,15 @@ const Register = () => {
     .then(res=>{
         console.log(res)
         if(res){
+            // updating an user
+            updateProfile(res.user, {
+                displayName: name , photoURL: img
+              }).then(() => {
+                
+                
+              }).catch((error) => {
+                console.log(error)
+              });
             toast.success('User Created Successfully')
             navigate('/')
             reset()
@@ -41,15 +54,22 @@ const Register = () => {
 
   }
     return (
-        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 overflow-auto min-h-screen">
+        <div className="register">
+            {/* className="bg-gradient-to-r from-cyan-500 to-blue-500 overflow-auto min-h-screen" */}
            
-        <div className="max-w-7xl mx-auto p-3 bg-white my-52 flex">
-                    {/* form */}
-                    <div className="bg-slate-300 p-5">
+                <div className="flex justify-around items-center py-52">
+                <section>
+                 <img src={registerSvg} alt="" />
+                  </section>
+                  
+                  <section>
+                  <div className="bg-white p-10">
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 p-2">
 
+                        <h1 className="text-center font-semibold text-2xl text-[#3c6e71]">Create An Account</h1>
 
-                <div className="form-control w-full">
+
+                <div className="form-control w-full max-w-sm">
                 <label className="label">
                     <span className="label-text text-2xl font-medium">Name</span>
                     
@@ -58,7 +78,7 @@ const Register = () => {
 
                 </div>
 
-                <div className="form-control w-full">
+                <div className="form-control w-full  max-w-sm">
                 <label className="label">
                     <span className="label-text text-2xl font-medium">Email</span>
                     
@@ -67,7 +87,7 @@ const Register = () => {
 
                 </div>
 
-                <div className="form-control w-full">
+                <div className="form-control w-full  max-w-sm">
                 <label className="label">
                     <span className="label-text text-2xl font-medium">Photo</span>
                     
@@ -75,7 +95,7 @@ const Register = () => {
                 <input {...register("img")} type="url" required placeholder="Img Link" className="input input-bordered w-full max-w-sm" />
 
                 </div>
-                <div className="form-control w-full">
+                <div className="form-control w-full  max-w-sm">
                 <label className="label">
                     <span className="label-text text-2xl font-medium">Password</span>
                     
@@ -86,24 +106,24 @@ const Register = () => {
 
                     
                        
-                       <button type="submit" className="btn-wide py-2 rounded-md bg-[#284b63] text-white text-xl">Register</button>
+                    <div className="flex justify-center my-3">
+                    <button type="submit" className="btn-wide py-2 rounded-md bg-[#284b63] text-white text-xl">Register</button>
+                    </div>
 
 
-                       <GoogleLogin></GoogleLogin>
-                    
-                    
+                      
+                    <GoogleLogin></GoogleLogin>
+
+                    <h1 className="font-medium text-xl text-center">Already have an account ? <span><Link to="/login"><u>Login</u></Link></span></h1>
 
                 </form>
                     </div>
-                    {/* form */}
-                    {/* svg */}
-                    <div className="flex-1">
-                    <img src={registerSvg} alt="" />
-                    </div>
-                    {/* svg */}
+                  </section>
+                </div>
+                   
 
 
-        </div>
+       
         </div>
     );
 };

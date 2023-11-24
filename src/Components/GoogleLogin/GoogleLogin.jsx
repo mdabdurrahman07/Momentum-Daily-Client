@@ -21,10 +21,9 @@ const GoogleLogin = () => {
     return (
 
         <>
-        <hr />
-         <div onClick={handleGoogle} className="flex justify-around items-center bg-green-300 rounded-xl">
-         <h1>Google</h1>
-        <FcGoogle className="text-5xl"/>
+       <div className="flex justify-center w-80 h-[1px] bg-slate-600"></div>
+         <div onClick={handleGoogle} className="flex justify-around items-center rounded-full">
+        <FcGoogle className="text-6xl animate-pulse"/>
 
          </div>
          

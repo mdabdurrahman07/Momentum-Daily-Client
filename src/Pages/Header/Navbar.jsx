@@ -1,6 +1,19 @@
 import { NavLink } from "react-router-dom";
+import UseAuth from "../../Hooks/UseAuth";
 
 const Navbar = () => {
+    const {user , logout} = UseAuth()
+    const handleLogout = () => {
+
+        logout()
+        .then(() => {
+           
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+    }
     const navLinks = <>
     
     <NavLink
@@ -27,14 +40,6 @@ const Navbar = () => {
         >
      <li className="text-base font-semibold"><a>All Articles</a></li>  
         </NavLink>
-    {/* <NavLink
-        to="/subscription"
-        className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
-        }
-        >
-        Dashboard
-        </NavLink>; */}
     <NavLink
         to="/myArticles"
         className={({ isActive, isPending }) =>
@@ -43,6 +48,15 @@ const Navbar = () => {
         >
      <li className="text-base font-semibold"><a>My Articles</a></li>   
         </NavLink>
+
+        <NavLink
+        to="/subscription"
+        className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+        }
+        >
+     <li className="text-base font-semibold"><a>Subscription</a></li>   
+        </NavLink>    
     {/* <NavLink
         to="/"
         className={({ isActive, isPending }) =>
@@ -51,9 +65,48 @@ const Navbar = () => {
         >
         Premium artcles
         </NavLink>; */}
+        {/* <NavLink
+        to="/subscription"
+        className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+        }
+        >
+        Dashboard
+        </NavLink>; */}
+
+        {
+            user?.email ? <>
+            
+            <li onClick={handleLogout} className="text-base font-semibold"><a>Logout</a></li>
+            
+            </> 
+            :
+           <>
+            <NavLink
+            to="/register"
+            className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+            }
+            >
+            <li className="text-base font-semibold"><a>Sign Up</a></li>
+            </NavLink>
+            <NavLink
+            to="/login"
+            className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+            }
+            >
+            <li className="text-base font-semibold"><a>Login</a></li>
+            </NavLink>
+            
+            </>
+        }
+        
     </>
+
+    
     return (
-        <div className="max-w-7xl mx-auto p-3">
+        <div className=" p-3">
                         <div className="navbar bg-base-100 shadow-lg p-3">
   <div className="navbar-start">
     <div className="dropdown">
@@ -72,11 +125,13 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-  <label  className=" avatar">
-        <div className="w-10 rounded-full">
-          <img alt="https://i.ibb.co/hLpjMDM/football-461340-640.jpg" />
-        </div>
-      </label>
+  {
+    user && <label  className=" avatar">
+    <div className="w-10 rounded-full">
+      <img src={user?.photoURL} />
+    </div>
+  </label> 
+  }
   </div>
 </div>
         </div>
