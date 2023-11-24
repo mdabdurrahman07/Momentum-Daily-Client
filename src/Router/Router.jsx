@@ -10,6 +10,7 @@ import AllArticles from '../Pages/AllArticles/AllArticles'
 import MyArticles from '../Pages/MyArticles/MyArticles'
 import Subscription  from '../Pages/Subscription/Subscription'
 import PrivateRoutes from "../Routes/PrivateRoutes";
+import MyProfile from "../Components/MyProfile/MyProfile";
 
 
     const router = createBrowserRouter([
@@ -36,7 +37,12 @@ import PrivateRoutes from "../Routes/PrivateRoutes";
             {
               path: '/subscription',
               element: <Subscription></Subscription>
+            },
+            {
+              path: '/myProfile',
+              element: <PrivateRoutes><MyProfile></MyProfile></PrivateRoutes>
             }
+           
           ]
 
         },

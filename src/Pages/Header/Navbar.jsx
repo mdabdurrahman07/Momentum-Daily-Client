@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth";
 
 const Navbar = () => {
@@ -126,11 +126,14 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
   {
-    user && <label  className=" avatar">
+    user && <Link to="/myProfile">
+    
+    <label  className=" avatar">
     <div className="w-10 rounded-full">
       <img src={user?.photoURL} />
     </div>
   </label> 
+    </Link>
   }
   </div>
 </div>
