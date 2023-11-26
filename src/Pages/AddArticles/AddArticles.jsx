@@ -6,11 +6,12 @@ import UseAxiosPublic from '../../Hooks/UseAxiosPublic'
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import UseAuth from "../../Hooks/UseAuth";
 
 
 
 const AddArticles = () => {
-  
+  const {user} = UseAuth()
   const { register, handleSubmit , control , reset} = useForm();
   const img_hoisting_key = import.meta.env.VITE_IMG_HOSTING_KEY
   const img_hoisting_api = `https://api.imgbb.com/1/upload?key=${img_hoisting_key}`
@@ -38,7 +39,8 @@ const AddArticles = () => {
         image: res?.data?.data?.display_url,
         approved : 'pending',
         type : data?.type,
-        description: data?.description
+        description: data?.description,
+        email: user?.email
       }
       const articleRes = await AxiosSecure.post('/allarticles' , AddArticles)
       console.log(articleRes?.data)

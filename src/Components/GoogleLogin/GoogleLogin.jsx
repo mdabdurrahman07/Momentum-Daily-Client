@@ -2,18 +2,34 @@ import toast from "react-hot-toast";
 import UseAuth from "../../Hooks/UseAuth";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
+import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 
 const GoogleLogin = () => {
     const navigate = useNavigate()
     const  {googleLogin} = UseAuth()
+    const AxiosPublic = UseAxiosPublic()
     const handleGoogle = () =>{
 
         googleLogin()
         .then(result =>{
             console.log(result.user)
             if(result.user){
-             toast.success('User Created Successfully')
-             navigate('/')
+                const UserInfo = {
+                    displayName: result?.user?.displayName,
+                    email: result?.user?.email,
+                    photoURL: result?.user?.photoURL,
+
+                }
+                AxiosPublic.post('/users' , UserInfo)
+                .then(()=>{
+                    toast.success('User Created Successfully')
+                   navigate('/')
+                })
+                .catch((error)=>{
+                    console.log(error)
+                    toast.error(error)
+                })
+             
            }
            })
          

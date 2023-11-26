@@ -6,10 +6,14 @@ import registerSvg from '../../assets/svg/registerSVG/undraw_newspaper_re_syf5.s
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 import './register.css'
 import { updateProfile } from "firebase/auth";
+import { Helmet } from "react-helmet";
+import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
+import { PiSpinnerBold } from "react-icons/pi";
 
 const Register = () => {
+  const AxiosPublic = UseAxiosPublic()
     const navigate = useNavigate()
-    const {createUser} = UseAuth()
+    const {createUser , user} = UseAuth()
     const { register, handleSubmit , reset } = useForm();
   const onSubmit = data => {
     console.log(data);
@@ -36,15 +40,32 @@ const Register = () => {
             // updating an user
             updateProfile(res.user, {
                 displayName: name , photoURL: img
-              }).then(() => {
+              })
+              .then(() => {
+                const userInfo  = {
+                  displayName: name,
+                  email: email,
+                  photoURL: img
+                }
+                AxiosPublic.post('/users' , userInfo)
+                .then(res=> {
+                  if(res?.data?.insertedId){
+                    toast.success('User Created Successfully')
+                    navigate('/')
+                    reset()
+                  }
+                })
+                .catch(error=>{
+                  toast.error(error)
+                })
+
                 
                 
-              }).catch((error) => {
-                console.log(error)
+              })
+              .catch((error) => {
+                toast.error(error)
               });
-            toast.success('User Created Successfully')
-            navigate('/')
-            reset()
+           
         }
     })
     .catch(error=>{
@@ -55,6 +76,9 @@ const Register = () => {
   }
     return (
         <div className="register">
+           <Helmet>
+            <title>Momentum Daily | Register</title>
+            </Helmet>
             {/* className="bg-gradient-to-r from-cyan-500 to-blue-500 overflow-auto min-h-screen" */}
            
                 <div className="flex justify-around items-center py-52">
@@ -107,7 +131,9 @@ const Register = () => {
                     
                        
                     <div className="flex justify-center my-3">
-                    <button type="submit" className="btn-wide py-2 rounded-md bg-[#284b63] text-white text-xl">Register</button>
+                    <button type="submit" className="btn-wide py-2 rounded-md bg-[#284b63] text-white text-xl flex justify-around items-center">Register
+                  {user &&   <PiSpinnerBold className="animate-spin"></PiSpinnerBold>}
+                    </button>
                     </div>
 
 

@@ -1,8 +1,12 @@
 import Marquee from "react-fast-marquee";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
     return (
         <div>
+          <Helmet>
+            <title>Momentum Daily | Home</title>
+          </Helmet>
 
           <section className="flex my-3">
           <h1 className="uppercase font-bold bg-red-500 text-white text-center rounded-lg">Breaking News</h1>

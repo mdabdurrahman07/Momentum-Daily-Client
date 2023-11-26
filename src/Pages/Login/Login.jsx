@@ -5,10 +5,12 @@ import GoogleLogin from '../../Components/GoogleLogin/GoogleLogin';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import UseAuth from '../../Hooks/UseAuth';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
+import { SiSpinrilla } from "react-icons/si";
 const Login = () => {
     const location = useLocation();
     const navigate = useNavigate()
-    const {login} = UseAuth()
+    const {login , user} = UseAuth()
     const { register, handleSubmit , reset } = useForm()
     const from = location.state?.from?.pathname || "/";
     const onSubmit = (data) => {
@@ -31,6 +33,10 @@ const Login = () => {
   }
     return (
         <div className="login">
+            <Helmet>
+            <title>Momentum Daily | Login</title>
+            </Helmet>
+            
            <section  className="flex justify-around items-center py-52">
            <div className='bg-white'>
 
@@ -58,14 +64,16 @@ const Login = () => {
 
        
         <div className="flex justify-center my-3">
-        <button type="submit" className="btn-wide py-2 rounded-md bg-[#284b63] text-white text-xl">Login</button>
+        <button type="submit" className="btn-wide py-2 rounded-md bg-[#284b63] text-white text-xl flex justify-around items-center">Login
+        {user && <SiSpinrilla className='animate-spin'></SiSpinrilla>}
+        </button>
         </div>
 
 
           
         <GoogleLogin></GoogleLogin>
 
-        <h1 className="font-medium text-xl text-center">Don't have an account ? <span><Link to="/login"><u>Register</u></Link></span></h1>
+        <h1 className="font-medium text-xl text-center">Don't have an account ? <span><Link to="/register"><u>Register</u></Link></span></h1>
 
 
 </form>
