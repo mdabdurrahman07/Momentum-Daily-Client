@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet";
 import { CiLogout } from "react-icons/ci";
 import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
 
@@ -53,13 +52,7 @@ const MyProfile = () => {
         .then(res => {
             console.log(res.data)
             if(res.data.modifiedCount > 0){
-                Swal.fire({
-                    
-                    icon: "success",
-                    title: "Your Profile Updated",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
+                toast.success('Your Profile Updated Successfully')
             }
         })
         .catch(error=>{
