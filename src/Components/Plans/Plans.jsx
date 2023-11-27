@@ -31,14 +31,17 @@ const Plans = () => {
           </div>
             <div className="grid grid-cols-1  md:grid-cols-3 justify-items-center items-center gap-5">
                 {
-                    items.map(value =>  <div key={value._id} className=" w-96 bg-base-100 border-[#3c6e71] border-4">
+                    items.map(value =>  <div key={value._id} className=" w-80 bg-base-100 border-[#3c6e71] border-4">
                     <figure><img src={value.img} alt="Shoes" className="w-48 h-48 mx-auto p-4" /></figure>
                     <div className="card-body">
                         <h2 className=" text-center text-red-400 text-2xl font-bold">{value.packages}</h2>
                         <p className="text-4xl font-bold text-center text-emerald-500">${value.price}</p>
                         <p className=" text-center text-red-400 text-xl font-semibold">{value.times}</p>
                         <div className="card-actions justify-end">
-                        <button className="bg-[#284b63] text-white w-full text-2xl font-medium p-2 rounded-xl">Buy Now</button>
+                         {
+                            value.price > 1 ? <button className="bg-[#284b63] text-white w-full text-2xl font-medium p-2 rounded-xl">Subscribe Now</button> :
+                            <button className="bg-gray-300  text-white w-full text-2xl font-medium p-2 rounded-xl btn-disabled">Free</button>
+                         }
                         </div>
                     </div>
                     </div>)

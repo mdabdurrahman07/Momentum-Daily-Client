@@ -5,6 +5,8 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { GiQueenCrown } from "react-icons/gi";
 
 import { MagnifyingGlass } from "react-loader-spinner";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const publicAxios = UseAxiosPublic()
 // const getarticles = async({paramss = 0}) =>{
@@ -43,6 +45,9 @@ const AllArticles = () => {
     })
      return (
         <div>
+          <Helmet>
+            <title>Momentum Daily | All Articles</title>
+          </Helmet>
           {/* filter */}
           {/* tags */}
           {/* articles cards */}
@@ -69,7 +74,7 @@ const AllArticles = () => {
                       <p>{items.shortdescription}</p>
                       <p className="text-xl font-medium">Author: <span className="font-bold">{items.author}</span></p>
                       <div className="card-actions justify-end">
-                        <button className="btn flex">Details <FaArrowRightLong></FaArrowRightLong></button>
+                        <Link to={`/premiumDetails/${items._id}`}><button className="btn bg-[#7C93C3] flex text-white">Details <FaArrowRightLong></FaArrowRightLong></button></Link>
                       </div>
                     </div>
                   </div>
@@ -84,7 +89,7 @@ const AllArticles = () => {
                       <p>{items.shortdescription}</p>
                       <p className="text-xl font-medium">Author: <span className="font-bold">{items.author}</span></p>
                           <div className="card-actions justify-end">
-                          <button className="btn flex">Details <FaArrowRightLong></FaArrowRightLong></button>
+                        <Link to={`/articlesDetails/${items._id}`}>  <button className="btn flex">Details <FaArrowRightLong></FaArrowRightLong></button></Link>
                           </div>
                         </div>
                       </div> 
