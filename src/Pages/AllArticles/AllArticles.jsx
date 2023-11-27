@@ -4,6 +4,8 @@ import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { GiQueenCrown } from "react-icons/gi";
 
+import { MagnifyingGlass } from "react-loader-spinner";
+
 const publicAxios = UseAxiosPublic()
 // const getarticles = async({paramss = 0}) =>{
 //     const res = publicAxios.get(`/allArticles?limit=3&offset=${ paramss }`)
@@ -29,7 +31,7 @@ const AllArticles = () => {
     // }, [])
     // console.log(articles)
 
-    const {data : Articles = []} = useQuery({
+    const {data : Articles = [] , isLoading} = useQuery({
         queryKey: ['Articles'],
         queryFn: async () => {
             const res = await publicAxios.get('/allArticles')
@@ -47,6 +49,16 @@ const AllArticles = () => {
           <div className="grid sm:grid-cols-1 md:grid-cols-2  lg:grid-cols-3 items-center justify-items-center gap-5 my-8">
 
             {
+              isLoading ? <MagnifyingGlass
+              visible={true}
+              height="100vh"
+              width="80%"
+              
+              ariaLabel="MagnifyingGlass-loading"
+              wrapperClass="MagnifyingGlass-wrapper"
+              glassColor = '#c0efff'
+              color = '#e15b64'
+            /> :
                 Articles.map(items => <div key={items._id} > 
                 {items.type === 'Premium' ? (
                     <div  className="card w-96 bg-[#FFF6F6] shadow-xl h-[600px]">
