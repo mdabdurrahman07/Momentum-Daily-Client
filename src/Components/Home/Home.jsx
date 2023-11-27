@@ -1,6 +1,7 @@
 import Marquee from "react-fast-marquee";
 import { Helmet } from "react-helmet";
 import About from "../About/About";
+import Plans from "../Plans/Plans";
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
             </Marquee>
           </section>
            <About></About>
+           <Plans></Plans>
         </div>
     );
 };

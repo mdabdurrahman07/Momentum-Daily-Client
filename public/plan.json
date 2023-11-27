@@ -1,0 +1,17 @@
+[
+    {
+      "img": "https://i.ibb.co/W5dk53G/free.png",
+      "price": 0.00,
+      "times": "One Day"
+    },
+    {
+      "img": "https://i.ibb.co/bbVg2rN/rock.png",
+      "price": 10.00,
+      "times": "Weekly"
+    },
+    {
+      "img": "https://i.ibb.co/L94DwQK/crown.png",
+      "price": 30.00,
+      "times": "One Year"
+    }
+  ]
