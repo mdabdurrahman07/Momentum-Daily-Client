@@ -1,5 +1,6 @@
 import Marquee from "react-fast-marquee";
 import { Helmet } from "react-helmet";
+import About from "../About/About";
 
 const Home = () => {
     return (
@@ -18,7 +19,7 @@ const Home = () => {
             <p className="mr-5 text-lg font-semibold">Pink Floyd Concert at Pompey</p>
             </Marquee>
           </section>
-           
+           <About></About>
         </div>
     );
 };
