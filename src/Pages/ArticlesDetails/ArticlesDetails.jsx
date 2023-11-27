@@ -1,15 +1,27 @@
-import { useLoaderData } from "react-router-dom";
-import UseAuth from "../../Hooks/UseAuth";
+import { useLoaderData, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
+import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 
 const ArticlesDetails = () => {
-    const {user} = UseAuth()
+    const axiosPublic = UseAxiosPublic()
+    const {id} = useParams()
+    console.log(id)
+    useEffect(()=>{
+    axiosPublic.put(`/allarticles/${id}`)
+    .then(res=>{
+        console.log(res.data)
+    })
+    .catch(error=>{
+        console.log(error)
+    })
+    },[axiosPublic, id])
     const items = useLoaderData()
     console.log(items)
     return (
         <div>
         <Helmet>
-            <title>Momentum Daily || Premium</title>
+            <title>Momentum Daily || Details</title>
         </Helmet> 
 
            <div className='space-y-5 my-8 p-3'>

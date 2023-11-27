@@ -2,6 +2,7 @@ import Marquee from "react-fast-marquee";
 import { Helmet } from "react-helmet";
 import About from "../About/About";
 import Plans from "../Plans/Plans";
+import Trending from "../Trending/Trending";
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
             <p className="mr-5 text-lg font-semibold">Pink Floyd Concert at Pompey</p>
             </Marquee>
           </section>
+         <div className="my-10"> <Trending></Trending></div>
            <About></About>
            <Plans></Plans>
         </div>

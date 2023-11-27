@@ -48,12 +48,12 @@ import ArticlesDetails from "../Pages/ArticlesDetails/ArticlesDetails";
             },
             {
               path: '/premiumDetails/:id',
-              element: <PremiumDetails></PremiumDetails>,
+              element: <PrivateRoutes><PremiumDetails></PremiumDetails></PrivateRoutes>,
               loader: ({params}) => fetch(`http://localhost:5000/allArticles/${params.id}`)
             },
             {
               path: '/articlesDetails/:id',
-              element: <ArticlesDetails></ArticlesDetails>,
+              element: <PrivateRoutes><ArticlesDetails></ArticlesDetails></PrivateRoutes>,
               loader: ({params}) => fetch(`http://localhost:5000/allArticles/${params.id}`)
             }
            
