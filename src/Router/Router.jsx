@@ -11,12 +11,14 @@ import MyArticles from '../Pages/MyArticles/MyArticles'
 import Subscription  from '../Pages/Subscription/Subscription'
 import PrivateRoutes from "../Routes/PrivateRoutes";
 import MyProfile from "../Components/MyProfile/MyProfile";
+// import Error from "../Components/Error/Error";
 
 
     const router = createBrowserRouter([
         {
           path: "/",
           element: <Main></Main>,
+          // errorElement: <Error></Error>,
           children: [
             {
                 path: '/',
