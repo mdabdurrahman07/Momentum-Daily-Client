@@ -3,6 +3,7 @@ import UseAuth from "../../Hooks/UseAuth";
 
 const Navbar = () => {
     const {user , logout} = UseAuth()
+    const isAdmin = true
     const handleLogout = () => {
 
         logout()
@@ -56,7 +57,21 @@ const Navbar = () => {
         }
         >
      <li className="text-base font-semibold"><a>Subscription</a></li>   
-        </NavLink>    
+        </NavLink>   
+
+    {
+        isAdmin ? <NavLink
+        to="/dashboard"
+        className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+        }
+        >
+        <li className="text-base font-semibold"><a>Dashboard</a></li>
+        </NavLink>
+
+        :
+       null
+    }     
     {/* <NavLink
         to="/"
         className={({ isActive, isPending }) =>
@@ -106,7 +121,7 @@ const Navbar = () => {
 
     
     return (
-        <div className=" p-3">
+        <div className="p-3">
                         <div className="navbar bg-base-100 shadow-lg p-3">
   <div className="navbar-start">
     <div className="dropdown">

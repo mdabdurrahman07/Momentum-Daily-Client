@@ -13,6 +13,7 @@ import PrivateRoutes from "../Routes/PrivateRoutes";
 import MyProfile from "../Components/MyProfile/MyProfile";
 import PremiumDetails from "../Pages/PremiumDetails/PremiumDetails";
 import ArticlesDetails from "../Pages/ArticlesDetails/ArticlesDetails";
+import Dashboard from "../Routes/Dashboard";
 // import Error from "../Components/Error/Error";
 
 
@@ -68,6 +69,11 @@ import ArticlesDetails from "../Pages/ArticlesDetails/ArticlesDetails";
         {
             path: '/login',
             element: <Login></Login>
+        },
+        {
+
+          path: '/dashboard',
+          element: <Dashboard></Dashboard>
         }
       ]);
 

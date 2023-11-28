@@ -56,7 +56,7 @@ const Trending = () => {
                 topArticles.map(article => <SwiperSlide key={article._id}>
                     <div  className="w-96 h-[500px] bg-[#F3EEEA] drop-shadow-xl">
                 <figure><img src={article.image} alt="articles"  /></figure>
-                <p className="flex gap-3 items-center bg-black text-white w-11  absolute top-2 right-3 animate-pulse"><FaEye></FaEye> {article.views}</p>
+                <p className="flex gap-3 items-center bg-black text-white w-14  absolute top-2 right-3 animate-pulse"><FaEye></FaEye> {article.views}</p>
                 <div className="card-body">
                     <h2 className="card-title">
                     {article.title.slice(0,41)}
