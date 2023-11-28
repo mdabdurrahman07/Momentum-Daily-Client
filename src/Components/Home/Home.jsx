@@ -4,6 +4,7 @@ import About from "../About/About";
 import Plans from "../Plans/Plans";
 import Trending from "../Trending/Trending";
 import Publisher from "../Publisher/Publisher";
+import Ads from "../Ads/Ads";
 
 const Home = () => {
     return (
@@ -25,6 +26,7 @@ const Home = () => {
          <div className="my-10"> <Trending></Trending></div>
          <Publisher></Publisher>
            <About></About>
+           <Ads></Ads>
            <Plans></Plans>
         </div>
     );
