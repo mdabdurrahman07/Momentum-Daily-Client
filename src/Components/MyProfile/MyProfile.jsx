@@ -18,7 +18,7 @@ const MyProfile = () => {
     const AxiosPublic = UseAxiosPublic()
     const [usersState, setUsersState] = useState(null);
    useEffect(()=>{
-    AxiosPublic.get(`/users?email=${user.email}`)
+    AxiosPublic.get(`/users/profile?email=${user.email}`)
     .then(res => {
         // console.log(res.data)
         setUsersState(res.data)

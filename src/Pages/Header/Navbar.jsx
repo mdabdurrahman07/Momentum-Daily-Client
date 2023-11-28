@@ -61,7 +61,7 @@ const Navbar = () => {
 
     {
         isAdmin ? <NavLink
-        to="/dashboard"
+        to="/dashboard/adminHome"
         className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "active" : ""
         }

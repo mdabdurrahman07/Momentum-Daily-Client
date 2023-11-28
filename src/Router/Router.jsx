@@ -14,6 +14,10 @@ import MyProfile from "../Components/MyProfile/MyProfile";
 import PremiumDetails from "../Pages/PremiumDetails/PremiumDetails";
 import ArticlesDetails from "../Pages/ArticlesDetails/ArticlesDetails";
 import Dashboard from "../Routes/Dashboard";
+import AllUsers from '../DashboardPages/AllUsers'
+import AdminHome from '../DashboardPages/AdminHome'
+import AllPublisher from '../DashboardPages/AllPublisher'
+import AllArticlesList from '../DashboardPages/AllArticlesList'
 // import Error from "../Components/Error/Error";
 
 
@@ -73,7 +77,26 @@ import Dashboard from "../Routes/Dashboard";
         {
 
           path: '/dashboard',
-          element: <Dashboard></Dashboard>
+          element: <Dashboard></Dashboard>,
+          children: [
+
+            {
+              path: '/dashboard/adminHome',
+              element: <AdminHome></AdminHome>
+            },
+            {
+              path: '/dashboard/allUsers',
+              element: <AllUsers></AllUsers>
+            },
+            {
+              path: '/dashboard/allArticles',
+              element: <AllArticlesList></AllArticlesList>
+            },
+            {
+              path: '/dashboard/addPublisher',
+              element: <AllPublisher></AllPublisher>
+            }
+          ]
         }
       ]);
 

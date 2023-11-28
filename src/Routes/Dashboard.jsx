@@ -17,7 +17,7 @@ const Dashboard = () => {
                     <NavLink
         to="/dashboard/adminHome"
         className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "bg-[#284b63] text-white" : ""
+            isPending ? "pending" : isActive ? "bg-[#284b63] text-white px-6 py-2" : ""
         }
         >
       Admin Home  
@@ -27,7 +27,7 @@ const Dashboard = () => {
                     <NavLink
         to="/dashboard/allUsers"
         className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "bg-[#284b63] text-white" : ""
+            isPending ? "pending" : isActive ? "bg-[#284b63] text-white px-6 py-2" : ""
         }
         >
      All Users  
@@ -37,7 +37,7 @@ const Dashboard = () => {
                     <NavLink
         to="/dashboard/allArticles"
         className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "bg-[#284b63] text-white" : ""
+            isPending ? "pending" : isActive ? "bg-[#284b63] text-white px-6 py-2" : ""
         }
         >
      All Articles  
@@ -47,7 +47,7 @@ const Dashboard = () => {
                     <NavLink
         to="/dashboard/addPublisher"
         className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "bg-[#284b63] text-white" : ""
+            isPending ? "pending" : isActive ? "bg-[#284b63] text-white px-6 py-2" : ""
         }
         >
      Add Publisher  
@@ -59,7 +59,7 @@ const Dashboard = () => {
                     <NavLink
         to="/"
         className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "bg-[#284b63] text-white" : ""
+            isPending ? "pending" : isActive ? "bg-[#284b63] text-white px-6 py-2" : ""
         }
         >
      Home  
