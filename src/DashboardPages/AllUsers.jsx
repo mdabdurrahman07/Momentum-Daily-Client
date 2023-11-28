@@ -19,14 +19,14 @@ const AllUsers = () => {
             .then(res => {
                 console.log(res.data)
                 if(res.data){
+                    refetch()
                     Swal.fire({
-                    
                         icon: "success",
                         title: `${user.displayName} is Admin Now `,
                         showConfirmButton: false,
                         timer: 1500
                       });
-                      refetch()
+                      
                 }
             })
     }
@@ -52,7 +52,7 @@ const AllUsers = () => {
       {
       isLoading ? <MagnifyingGlass
       visible={true}
-      height="100vh"
+      height="800px"
       width="80%"
       
       ariaLabel="MagnifyingGlass-loading"

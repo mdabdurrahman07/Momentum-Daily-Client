@@ -1,9 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth";
+import UseAdmin from "../../Hooks/UseAdmin";
 
 const Navbar = () => {
     const {user , logout} = UseAuth()
-    const isAdmin = true
+    const [isAdmin] = UseAdmin()
     const handleLogout = () => {
 
         logout()
