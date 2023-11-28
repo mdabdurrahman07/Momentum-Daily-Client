@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import About from "../About/About";
 import Plans from "../Plans/Plans";
 import Trending from "../Trending/Trending";
+import Publisher from "../Publisher/Publisher";
 
 const Home = () => {
     return (
@@ -22,6 +23,7 @@ const Home = () => {
             </Marquee>
           </section>
          <div className="my-10"> <Trending></Trending></div>
+         <Publisher></Publisher>
            <About></About>
            <Plans></Plans>
         </div>

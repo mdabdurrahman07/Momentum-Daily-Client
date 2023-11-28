@@ -5,7 +5,7 @@ import aboutAnimation from '../../assets/aboutAnimations/Animation - 17011196160
 
 const About = () => {
     return (
-        <div data-aos="fade-up" className="my-6">
+        <div data-aos="fade-up" className="my-10">
             <div className="font-semibold text-4xl text-[#3c6e71] p-3 text-center">
             <Typewriter
             words={['About Us']}

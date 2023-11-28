@@ -4,14 +4,30 @@ import { FaEye } from "react-icons/fa";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Typewriter } from "react-simple-typewriter";
 
+
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 // import required modules
-import { FreeMode, Pagination } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
 
 const Trending = () => {
+    const [slidesPerView, setSlidesPerView] = useState(3);
+    useEffect(() => {
+        const handleResize = () => {
+          
+          if (window.innerWidth <= 600) {
+            setSlidesPerView(1);
+          } else {
+            setSlidesPerView(3);
+          }
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
     const axiosPublic = UseAxiosPublic()
     const [data , setData] = useState([])
     useEffect(()=>{
@@ -40,15 +56,14 @@ const Trending = () => {
             
           />
             </div>
-               <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        freeMode={true}
+            <Swiper
+        slidesPerView={slidesPerView}
+        spaceBetween={20}
         pagination={{
           clickable: true,
         }}
-        modules={[FreeMode, Pagination]}
-        className="mySwiper"
+        modules={[Pagination]}
+        className="mySwiper mb-10"
       >
     
        
