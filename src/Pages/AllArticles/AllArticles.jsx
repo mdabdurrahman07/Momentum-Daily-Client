@@ -3,10 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { GiQueenCrown } from "react-icons/gi";
-
 import { MagnifyingGlass } from "react-loader-spinner";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+
 
 const publicAxios = UseAxiosPublic()
 // const getarticles = async({paramss = 0}) =>{
@@ -15,6 +15,7 @@ const publicAxios = UseAxiosPublic()
 //     return {...data, prevOffset: paramss}
 // }
 const AllArticles = () => {
+ 
     // const {data , fetchNextPage , hasNextPage } = useInfiniteQuery({
     //     queryKey: ['articles'],
     //     queryFn:getarticles,
@@ -43,6 +44,7 @@ const AllArticles = () => {
         
 
     })
+    
      return (
         <div>
           <Helmet>
@@ -65,7 +67,7 @@ const AllArticles = () => {
               color = '#e15b64'
             /> :
                 Articles.map(items => <div key={items._id} > 
-                {items.type === 'Premium' ? (
+                {items.type === 'Premium' && items.approved === 'approved'  ? (
                     <div  className="card w-96 bg-[#FFF6F6] shadow-xl h-[600px]">
                     <figure className="relative"><img src={items.image} alt="Shoes" /></figure>
                     <div className="flex gap-3 items-center text-orange-200 animate-bounce absolute top-3 p-1 rounded-xl font-bold left-3 bg-red-600">Premium <GiQueenCrown></GiQueenCrown></div>
@@ -81,7 +83,7 @@ const AllArticles = () => {
                          )
                     :
                     
-                    (
+                    ( items.approved === 'approved' ? 
                         <div  className="card w-96 bg-base-100 shadow-xl h-[600px]">
                          <figure><img src={items.image} alt="Shoes" /></figure>
                     <div className="card-body">
@@ -93,6 +95,8 @@ const AllArticles = () => {
                           </div>
                         </div>
                       </div> 
+                      :
+                      <></>
                     )
             } 
 

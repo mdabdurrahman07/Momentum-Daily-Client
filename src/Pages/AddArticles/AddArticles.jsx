@@ -38,9 +38,12 @@ const AddArticles = () => {
         tags: value,
         image: res?.data?.data?.display_url,
         approved : 'pending',
-        type : data?.type,
+        type : 'normal',
         description: data?.description,
-        email: user?.email
+        email: user?.email,
+        authorPic: user?.photoURL,
+        date: new Date().toLocaleDateString()
+        
       }
       const articleRes = await AxiosSecure.post('/allarticles' , AddArticles)
       console.log(articleRes?.data)
@@ -192,16 +195,7 @@ const AddArticles = () => {
 
            {/* author & types */}
 
-            {/* author */}
-            <div className="form-control w-full max-w-md">
-                <label className="label">
-                    <span className="label-text text-2xl font-medium">Article Type<span className="text-red-500">*</span></span>
-                    
-                </label>
-                <input {...register("type" , {required : true})} type="text" required placeholder="Normal/Premium" className="input input-bordered w-full " />
-
-                </div>
-                  {/* author */} 
+            
 
             <div className="flex justify-center my-5">
             <button type="submit" className="px-10 py-3 bg-[#3c6e71] text-white font-medium text-xl flex items-center gap-4">Add Articles <LuUploadCloud /></button>

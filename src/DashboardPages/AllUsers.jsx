@@ -3,6 +3,7 @@ import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import { GrUserAdmin } from "react-icons/gr";
 import Swal from "sweetalert2";
 import { MagnifyingGlass } from "react-loader-spinner";
+import { Helmet } from "react-helmet";
 
 const AllUsers = () => {
     const AxiosSecure = UseAxiosSecure()
@@ -34,7 +35,10 @@ const AllUsers = () => {
     return (
     
         <div className="">
-          
+          <Helmet>
+            <title>Momentum Daily | Admin</title>
+          </Helmet>
+          <div className="text-3xl font-semibold bg-[#3c6e71] text-center text-white p-5">DashBoard | All Users</div>
             <div className="max-w-6xl mx-auto my-10 bg-white">
   <table className="table  w-full">
     {/* head */}
@@ -63,7 +67,7 @@ const AllUsers = () => {
             <th className="text-lg font-semibold">{idx + 1}</th>
             <td className="text-lg font-semibold">{user?.displayName}</td>
             <td className="text-lg font-semibold">{user?.email}</td>
-            <td><img src={user?.photoURL} alt="" className="w-16 rounded-full" /></td>
+            <td><img src={user?.photoURL} alt="" className="w-16 rounded-full h-16" /></td>
             <td >{user?.role === 'Admin' ? <div  className="text-lg font-semibold bg-green-700 text-white text-center">Admin</div>
              : <button onClick={() =>handleMakeAdmin(user)}>
             <GrUserAdmin className="text-2xl"></GrUserAdmin>

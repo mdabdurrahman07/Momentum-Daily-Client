@@ -8,7 +8,7 @@ const Ads = () => {
         <div>
             <Carousel autoPlay={true} showThumbs={false}>
             <div>
-                    <img src={img1} />
+                    <img src={img3} />
                    
                 </div>
             <div>
@@ -16,7 +16,7 @@ const Ads = () => {
                    
                 </div>
             <div>
-                    <img src={img3} />
+                    <img src={img1} />
                    
                 </div>
             </Carousel>

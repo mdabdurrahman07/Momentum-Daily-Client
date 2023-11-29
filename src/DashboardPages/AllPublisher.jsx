@@ -3,6 +3,7 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const AllPublisher = () => {
     const AxiosSecure = UseAxiosSecure()
@@ -36,6 +37,11 @@ const AllPublisher = () => {
     
     }
     return (
+        <>
+        <Helmet>
+        <title>Momentum Daily | Admin</title>
+      </Helmet>
+      <div className="text-3xl font-semibold bg-[#3c6e71] text-center text-white p-5">DashBoard | Add Publisher</div>
         <div className="max-w-5xl p-4 mx-auto mt-40">
             <div className="bg-white p-11 space-y-10">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -63,6 +69,7 @@ const AllPublisher = () => {
     </form>
             </div>
         </div>
+        </>
     );
 };
 

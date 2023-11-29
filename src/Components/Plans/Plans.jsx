@@ -2,6 +2,7 @@ import {  useEffect, useState } from "react";
 import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 import { Typewriter } from "react-simple-typewriter";
 
+
 const Plans = () => {
     const [items , setItems] = useState([])
     const AxiosPublic = UseAxiosPublic()
@@ -37,6 +38,10 @@ const Plans = () => {
                         <h2 className=" text-center text-red-400 text-2xl font-bold">{value.packages}</h2>
                         <p className="text-4xl font-bold text-center text-emerald-500">${value.price}</p>
                         <p className=" text-center text-red-400 text-xl font-semibold">{value.times}</p>
+                        <p className="text-left text-xl font-bold bg-green-500 text-white w-20">Features</p>
+                        <p className="font-medium text-lg">*{value.advantageone}</p>
+                        <p  className="font-medium text-lg">*{value.advantagetwo}</p>
+                        <p  className="font-medium text-lg">*{value.advantagethree}</p>
                         <div className="card-actions justify-end">
                          {
                             value.price > 1 ? <button className="bg-[#284b63] text-white w-full text-2xl font-medium p-2 rounded-xl">Subscribe Now</button> :
