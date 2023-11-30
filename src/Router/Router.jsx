@@ -44,7 +44,7 @@ import AdminRoutes from "../Routes/AdminRoutes";
             {
               path: '/paymentGateway/:id',
               element: <PrivateRoutes><PaymentGateWay></PaymentGateWay></PrivateRoutes>,
-              loader: () => fetch('http://localhost:5000/plans')
+              loader: () => fetch('https://momentum-daily-server.vercel.app/plans')
 
             },
             {
@@ -71,22 +71,22 @@ import AdminRoutes from "../Routes/AdminRoutes";
             {
               path: '/premiumDetails/:id',
               element: <PrivateRoutes><PremiumDetails></PremiumDetails></PrivateRoutes>,
-              loader: ({params}) => fetch(`http://localhost:5000/allarticles/${params.id}`)
+              loader: ({params}) => fetch(`https://momentum-daily-server.vercel.app/allarticles/${params.id}`)
             },
             {
               path: '/articlesDetails/:id',
               element: <PrivateRoutes><ArticlesDetails></ArticlesDetails></PrivateRoutes>,
-              loader: ({params}) => fetch(`http://localhost:5000/allarticles/${params.id}`)
+              loader: ({params}) => fetch(`https://momentum-daily-server.vercel.app/allarticles/${params.id}`)
             },
             {
               path: '/updateDetails/:id',
               element: <PrivateRoutes><UpdateDetails></UpdateDetails></PrivateRoutes>,
-              loader: () => fetch('http://localhost:5000/allarticles')
+              loader: () => fetch('https://momentum-daily-server.vercel.app/allarticles')
             },
             {
               path: '/myarticles/details/:id',
               element: <PrivateRoutes><MyArticlesDetails></MyArticlesDetails></PrivateRoutes>,
-              loader: ({params}) => fetch(`http://localhost:5000/allarticles/${params.id}`)
+              loader: ({params}) => fetch(`https://momentum-daily-server.vercel.app/allarticles/${params.id}`)
 
             }
            

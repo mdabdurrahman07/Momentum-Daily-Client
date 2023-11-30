@@ -3,7 +3,7 @@ import axios from "axios";
 
 const UseAxiosPublic = () => {
     const Public = axios.create({
-        baseURL: 'http://localhost:5000',
+        baseURL: 'https://momentum-daily-server.vercel.app',
         
       });
     return Public

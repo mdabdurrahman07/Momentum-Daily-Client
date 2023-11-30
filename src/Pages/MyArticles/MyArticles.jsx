@@ -19,7 +19,7 @@ const MyArticles = () => {
 
         queryKey: ['myarticles'],
         queryFn: async () =>{
-            const res = await AxiosSecure.get(`http://localhost:5000/allarticles/myarticles?email=${user?.email}`)
+            const res = await AxiosSecure.get(`https://momentum-daily-server.vercel.app/allarticles/myarticles?email=${user?.email}`)
             console.log(res?.data)
             return res?.data
         }

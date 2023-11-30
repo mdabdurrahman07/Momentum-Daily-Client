@@ -7,7 +7,7 @@ const UseAxiosSecure = () => {
   const navigate = useNavigate()
   const {logout} = UseAuth()
     const Secure = axios.create({
-        baseURL: 'http://localhost:5000',
+        baseURL: 'https://momentum-daily-server.vercel.app',
         
       });
       Secure.interceptors.request.use(function (config) {
