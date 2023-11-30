@@ -44,7 +44,7 @@ import Error from "../Components/Error/Error";
             {
               path: '/paymentGateway/:id',
               element: <PrivateRoutes><PaymentGateWay></PaymentGateWay></PrivateRoutes>,
-              loader: () => fetch('https://momentum-daily-server-4j2b9uwm5.vercel.app/plans')
+              loader: () => fetch('https://momentum-daily-server.vercel.app/plans')
 
             },
             {
@@ -71,22 +71,22 @@ import Error from "../Components/Error/Error";
             {
               path: '/premiumDetails/:id',
               element: <PrivateRoutes><PremiumDetails></PremiumDetails></PrivateRoutes>,
-              loader: ({params}) => fetch(`https://momentum-daily-server-4j2b9uwm5.vercel.app/allarticles/${params.id}`)
+              loader: ({params}) => fetch(`https://momentum-daily-server.vercel.app/allarticles/${params.id}`)
             },
             {
               path: '/articlesDetails/:id',
               element: <PrivateRoutes><ArticlesDetails></ArticlesDetails></PrivateRoutes>,
-              loader: ({params}) => fetch(`https://momentum-daily-server-4j2b9uwm5.vercel.app/allarticles/${params.id}`)
+              loader: ({params}) => fetch(`https://momentum-daily-server.vercel.app/allarticles/${params.id}`)
             },
             {
               path: '/updateDetails/:id',
               element: <PrivateRoutes><UpdateDetails></UpdateDetails></PrivateRoutes>,
-              loader: () => fetch('https://momentum-daily-server-4j2b9uwm5.vercel.app/allarticles')
+              loader: () => fetch('https://momentum-daily-server.vercel.app/allarticles')
             },
             {
               path: '/myarticles/details/:id',
               element: <PrivateRoutes><MyArticlesDetails></MyArticlesDetails></PrivateRoutes>,
-              loader: ({params}) => fetch(`https://momentum-daily-server-4j2b9uwm5.vercel.app/allarticles/${params.id}`)
+              loader: ({params}) => fetch(`https://momentum-daily-server.vercel.app/allarticles/${params.id}`)
 
             }
            
