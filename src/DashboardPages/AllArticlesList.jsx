@@ -7,9 +7,11 @@ import { RxCrossCircled } from "react-icons/rx";
 import { MdDelete } from "react-icons/md";
 import { GiImperialCrown } from "react-icons/gi";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 
 const AllArticlesList = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
   const AxiosSecure = UseAxiosSecure()
   const {data: article = [] , isLoading , refetch} = useQuery({
     queryKey: ['article'],
@@ -20,6 +22,15 @@ const AllArticlesList = () => {
     }
     
   })
+  const handleOpenModal = () => {
+    console.log('working')
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
   // console.log(article)
 //  approving the article
   const handleUpdateStatus =  (values) => {
@@ -48,6 +59,7 @@ const AllArticlesList = () => {
     const form = new FormData(e.currentTarget);
     const reason = form.get('reason');
     console.log(reason)
+    console.log(id)
     AxiosSecure.put(`/allarticles/declineStatus/${id}` ,{reason})
     .then(res =>{
       console.log(res.data)
@@ -55,6 +67,8 @@ const AllArticlesList = () => {
     .catch(error =>{
       console.log(error)
     })
+
+    handleCloseModal()
 
 
   }
@@ -173,14 +187,16 @@ const handleDelete = (values) => {
         </td>
         <td>
             
-        <button  onClick={()=>document.getElementById('my_modal_3').showModal()}>
+        <button  onClick={handleOpenModal}>
            <RxCrossCircled className="text-orange-500 font-bold text-3xl ml-5">
             </RxCrossCircled></button>
-          <dialog id="my_modal_3" className="modal">
+          {isModalOpen && 
+          
+        (  <dialog  id="my_modal_3" className="modal" open>
             <div className="modal-box">
               <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                <button onClick={handleCloseModal} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
               </form>
               <h3 className="font-bold text-lg text-center">Write The reason for Declination</h3>
               <form  onSubmit={(e) => handleDecline(e , values._id)}>
@@ -192,7 +208,7 @@ const handleDelete = (values) => {
           </div>
         </form>
             </div>
-          </dialog>
+          </dialog>)}
         </td>
         <td className="text-lg font-medium">
             <button onClick={()=>handleDelete(values)} ><MdDelete className="text-red-500 font-bold text-3xl ml-5"></MdDelete>

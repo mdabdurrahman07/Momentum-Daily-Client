@@ -18,6 +18,8 @@ import AllUsers from '../DashboardPages/AllUsers'
 import AdminHome from '../DashboardPages/AdminHome'
 import AllPublisher from '../DashboardPages/AllPublisher'
 import AllArticlesList from '../DashboardPages/AllArticlesList'
+import UpdateDetails from "../Pages/UpdateDetails/UpdateDetails";
+import MyArticlesDetails from "../Pages/MyArticlesDetails/MyArticlesDetails";
 // import Error from "../Components/Error/Error";
 
 
@@ -54,12 +56,23 @@ import AllArticlesList from '../DashboardPages/AllArticlesList'
             {
               path: '/premiumDetails/:id',
               element: <PrivateRoutes><PremiumDetails></PremiumDetails></PrivateRoutes>,
-              loader: ({params}) => fetch(`http://localhost:5000/allArticles/${params.id}`)
+              loader: ({params}) => fetch(`http://localhost:5000/allarticles/${params.id}`)
             },
             {
               path: '/articlesDetails/:id',
               element: <PrivateRoutes><ArticlesDetails></ArticlesDetails></PrivateRoutes>,
-              loader: ({params}) => fetch(`http://localhost:5000/allArticles/${params.id}`)
+              loader: ({params}) => fetch(`http://localhost:5000/allarticles/${params.id}`)
+            },
+            {
+              path: '/updateDetails/:id',
+              element: <UpdateDetails></UpdateDetails>,
+              loader: () => fetch('http://localhost:5000/allarticles')
+            },
+            {
+              path: '/myarticles/details/:id',
+              element: <MyArticlesDetails></MyArticlesDetails>,
+              loader: ({params}) => fetch(`http://localhost:5000/allarticles/${params.id}`)
+
             }
            
           ]

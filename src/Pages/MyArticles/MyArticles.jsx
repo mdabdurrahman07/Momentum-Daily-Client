@@ -7,9 +7,12 @@ import { MdDeleteForever } from "react-icons/md";
 // import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MagnifyingGlass } from "react-loader-spinner";
+import { Link } from "react-router-dom";
+
 
 
 const MyArticles = () => {
+    
     const {user} = UseAuth()
     const AxiosSecure = UseAxiosSecure()
     const {data: myarticles = [{}] , isLoading , refetch} = useQuery({
@@ -22,6 +25,8 @@ const MyArticles = () => {
         }
 
     })
+    
+    // my article delete
     const handleDelete =  id  => {
 
         AxiosSecure.delete(`/allarticles/myarticles/${id}`)
@@ -51,6 +56,7 @@ const MyArticles = () => {
 
 
     }
+    
     return (
         <div>
           <Helmet>
@@ -91,31 +97,42 @@ myarticles.map((items , idx) =>   <tr key={items._id}>
 <th className="text-lg font-medium">{idx + 1}</th>
 <td className="text-lg font-medium">{items?.title}</td>
 <td >
-    {/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="text-lg font-medium" onClick={()=>document.getElementById('my_modal_1').showModal()}>Details</button>
-<dialog id="my_modal_1" className="modal">
-<div className="modal-box">
-<img src={items?.image} alt="" />
-<p className="font-semibold text-lg mt-2">Description</p>
-<p className="py-2">{items?.description}</p>
-<p className="text-lg font-semibold"><span className="text-green-500 mr-3">Publisher</span>{items?.publisher}</p>
-<div className="modal-action">
-<form method="dialog">
-{/* if there is a button in form, it will close the modal */}
-<button className="btn">Close</button>
-</form>
-</div>
-</div>
-</dialog>
+   
+            <Link to={`/myarticles/details/${items._id}`}>
+            <button className="text-lg font-medium bg-violet-500 rounded-xl text-white px-5 py-1"
+            >Details</button>
+            </Link>
+
 </td>
-<td className="text-lg font-medium">{items?.approved}</td>
+<td className="text-lg font-medium">{items?.approved === 'declined' ?  <>
+
+        <span className="text-red-500">{items?.approved}</span>
+
+<button className="btn ml-2" onClick={()=>document.getElementById('my_modal_2').showModal()}>Reason</button>
+<dialog id="my_modal_2" className="modal">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg text-red-500">Reason of Declination</h3>
+    <p className="py-4 text-yellow-500 flex justify-center text-xl">{items?.reason}</p>
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button in form, it will close the modal */}
+        <button  className="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+
+</>  : items?.approved }</td>
 <td className="text-lg font-medium">{items?.type === 'normal' ? 'No' : items?.type}</td>
 <td className="text-lg font-medium">
-    <button>
+   <Link to={`/updateDetails/${items._id}`}>
+   <button>
         <GrDocumentUpdate className="text-2xl font-medium text-blue-500">
 
         </GrDocumentUpdate>
-    </button></td>
+    </button>
+   </Link></td>
 <td className="text-lg font-medium">
     <button onClick={() => handleDelete(items?._id)}>
         <MdDeleteForever className="text-2xl font-medium text-red-500">

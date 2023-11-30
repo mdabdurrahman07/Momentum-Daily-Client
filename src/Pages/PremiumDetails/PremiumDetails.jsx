@@ -2,22 +2,14 @@
 import { Helmet } from 'react-helmet';
 import { useLoaderData, useParams } from 'react-router-dom';
 import UseAuth from '../../Hooks/UseAuth';
-import UseAxiosPublic from '../../Hooks/UseAxiosPublic';
-import { useEffect } from 'react';
+
 
 const PremiumDetails = () => {
-    const axiosPublic = UseAxiosPublic()
+   
     const {id} = useParams()
     console.log(id)
-    useEffect(()=>{
-    axiosPublic.put(`/allarticles/${id}`)
-    .then(res=>{
-        console.log(res.data)
-    })
-    .catch(error=>{
-        console.log(error)
-    })
-    },[axiosPublic, id])
+    
+  
     const {user} = UseAuth()
     const items = useLoaderData()
     console.log(items)

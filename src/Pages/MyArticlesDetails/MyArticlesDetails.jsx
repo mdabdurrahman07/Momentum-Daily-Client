@@ -1,9 +1,7 @@
-import { useLoaderData, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useLoaderData, useParams } from "react-router-dom";
 
-
-const ArticlesDetails = () => {
-    
+const MyArticlesDetails = () => {
     const {id} = useParams()
     console.log(id)
     
@@ -29,4 +27,4 @@ const ArticlesDetails = () => {
     );
 };
 
-export default ArticlesDetails;
+export default MyArticlesDetails;
