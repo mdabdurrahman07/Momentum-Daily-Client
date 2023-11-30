@@ -20,7 +20,7 @@ This is a MERN Full stack Project , with admin pannel , in this website and user
 
 ## Links
 
-Live link of the Website :  [momentumdaily.web.app](https://bistro-restaurant-a4f98.web.app/)
+Live link of the Website :  [momentum-daily.web.app](https://momentum-daily.web.app/)
 
 
 
