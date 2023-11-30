@@ -22,6 +22,8 @@ import UpdateDetails from "../Pages/UpdateDetails/UpdateDetails";
 import MyArticlesDetails from "../Pages/MyArticlesDetails/MyArticlesDetails";
 import PaymentGateWay from "../Pages/PaymentGateway/PaymentGateWay";
 import Premium from "../Pages/Premium/Premium";
+import AdminRoutes from "../Routes/AdminRoutes";
+
 // import Error from "../Components/Error/Error";
 
 
@@ -60,7 +62,7 @@ import Premium from "../Pages/Premium/Premium";
             },
             {
               path: '/PremiumAccount',
-              element: <Premium></Premium>
+              element:<PrivateRoutes> <Premium></Premium></PrivateRoutes>
             },
             {
               path: '/myProfile',
@@ -108,19 +110,19 @@ import Premium from "../Pages/Premium/Premium";
 
             {
               path: '/dashboard/adminHome',
-              element: <AdminHome></AdminHome>
+              element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
             },
             {
               path: '/dashboard/allUsers',
-              element: <AllUsers></AllUsers>
+              element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
             },
             {
               path: '/dashboard/allArticles',
-              element: <AllArticlesList></AllArticlesList>
+              element:  <AdminRoutes>  <AllArticlesList></AllArticlesList></AdminRoutes>
             },
             {
               path: '/dashboard/addPublisher',
-              element: <AllPublisher></AllPublisher>
+              element: <AdminRoutes><AllPublisher></AllPublisher></AdminRoutes>
             }
           ]
         }

@@ -34,7 +34,7 @@ const Navbar = () => {
     }
    useEffect(()=>{
     data?.map(items => setpremium(items))
-    console.log(premium)
+    // console.log(premium)
    },[data, premium])
     const navLinks = <>
     

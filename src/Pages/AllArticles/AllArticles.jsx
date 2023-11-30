@@ -6,16 +6,22 @@ import { GiQueenCrown } from "react-icons/gi";
 import { MagnifyingGlass } from "react-loader-spinner";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 
 
-const publicAxios = UseAxiosPublic()
+
+
 // const getarticles = async({paramss = 0}) =>{
 //     const res = publicAxios.get(`/allArticles?limit=3&offset=${ paramss }`)
 //     const data = res.data
 //     return {...data, prevOffset: paramss}
 // }
 const AllArticles = () => {
- 
+  const publicAxios = UseAxiosPublic()
+  const AxiosSecure = UseAxiosSecure()
+  const [data , setdata] = useState([])
+  const [premium , setpremium] = useState({})
     // const {data , fetchNextPage , hasNextPage } = useInfiniteQuery({
     //     queryKey: ['articles'],
     //     queryFn:getarticles,
@@ -44,7 +50,20 @@ const AllArticles = () => {
         
 
     })
-    
+     useEffect(()=>{
+         AxiosSecure.get('/users/premium')  
+         .then(res=>{
+            setdata(res.data)
+
+         })
+         .catch(error => {
+            console.log(error)
+         })
+    },[AxiosSecure])
+    useEffect(()=>{
+      data?.map(items => setpremium(items))
+      console.log(premium)
+     },[data, premium])
      return (
         <div>
           <Helmet>
@@ -76,7 +95,10 @@ const AllArticles = () => {
                       <p>{items.shortdescription}</p>
                       <p className="text-xl font-medium">Author: <span className="font-bold">{items.author}</span></p>
                       <div className="card-actions justify-end">
-                        <Link to={`/premiumDetails/${items._id}`}><button className="btn bg-[#7C93C3] flex text-white">Details <FaArrowRightLong></FaArrowRightLong></button></Link>
+                      { premium.isPremium === true ?   <Link to={`/premiumDetails/${items._id}`}>
+                          <button className="btn bg-[#7C93C3] flex text-white">Details <FaArrowRightLong></FaArrowRightLong>
+                          </button></Link> :  <button className="btn bg-[#7C93C3] flex text-white">Details <FaArrowRightLong></FaArrowRightLong>
+                          </button>}
                       </div>
                     </div>
                   </div>

@@ -13,7 +13,7 @@ const UseAxiosSecure = () => {
       Secure.interceptors.request.use(function (config) {
         // Do something before request is sent
        const token = localStorage.getItem('AccessToken')
-       console.log(token)
+      //  console.log(token)
        config.headers.authorized = `Token ${token}`
       //  console.log(config)
         return config;

@@ -1,8 +1,27 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#  Momentum Daily 
 
-Currently, two official plugins are available:
+This is a MERN Full stack Project , with admin pannel , in this website and user can purchase premium article subscription can add his own articles and admin can review them 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Key Features
+
+ - Home Page responsive
+ - Login & Register System 
+ - Admin Pannel
+ - Private Route System
+ - Loader
+ - CRUD Method
+ - Dynamics Routes
+ - Secure Database (JWT)
+ - Stripe Payments
+
+ 
+
+## Links
+
+Live link of the Website :  [momentumdaily.web.app](https://bistro-restaurant-a4f98.web.app/)
+
+
+
+
