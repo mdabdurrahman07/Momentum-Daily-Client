@@ -11,14 +11,14 @@ const Publisher = () => {
     useEffect(()=>{
         AxiosPublic.get('/publisher')
     .then(res =>{
-        console.log(res?.data)
+        // console.log(res?.data)
         Setpublisher(res?.data)
     })
     .catch(error=>{
         toast.error(error)
     })
     },[AxiosPublic])
-    console.log(publisher)
+    // console.log(publisher)
     return (
       <div className="my-6">
          <div className="font-semibold text-4xl text-[#3c6e71] p-3 text-center mb-3">

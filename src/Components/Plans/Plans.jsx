@@ -1,6 +1,7 @@
 import {  useEffect, useState } from "react";
 import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 import { Typewriter } from "react-simple-typewriter";
+import { Link } from "react-router-dom";
 
 
 const Plans = () => {
@@ -10,12 +11,12 @@ const Plans = () => {
             AxiosPublic.get('/plans')
             .then(res=>{
                 setItems(res.data)
-                console.log(res.data)
+                // console.log(res.data)
             })
             .catch(error=>{
                 console.log(error)
             })
-        },[])
+        },[AxiosPublic])
     return (
         <div className="my-6">
            <div className="font-semibold text-4xl text-[#3c6e71] p-3 mb-6 text-center">
@@ -42,11 +43,15 @@ const Plans = () => {
                         <p className="font-medium text-lg">*{value.advantageone}</p>
                         <p  className="font-medium text-lg">*{value.advantagetwo}</p>
                         <p  className="font-medium text-lg">*{value.advantagethree}</p>
-                        <div className="card-actions justify-end">
-                         {
-                            value.price > 1 ? <button className="bg-[#284b63] text-white w-full text-2xl font-medium p-2 rounded-xl">Subscribe Now</button> :
-                            <button className="bg-gray-300  text-white w-full text-2xl font-medium p-2 rounded-xl btn-disabled">Free</button>
-                         }
+                        <div className="card-actions justify-center">
+                         
+                           {
+                            value.price > 1 ? 
+                            <Link to={`/paymentGateway/${value._id}`}>
+                           <button className="bg-[#284b63] text-white w-full text-2xl font-medium p-2 rounded-xl">Subscribe Now</button> 
+                           </Link> : <button className="bg-[#284b63] text-white w-full text-2xl font-medium p-2 rounded-xl">Free</button> }
+                            
+                         
                         </div>
                     </div>
                     </div>)

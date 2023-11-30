@@ -1,8 +1,24 @@
 import { Link, NavLink } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth";
 import UseAdmin from "../../Hooks/UseAdmin";
+import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
+import { useEffect, useState } from "react";
+
 
 const Navbar = () => {
+    const [data , setdata] = useState([])
+    const [premium , setpremium] = useState({})
+    const AxiosSecure = UseAxiosSecure()
+    useEffect(()=>{
+         AxiosSecure.get('/users/premium')  
+         .then(res=>{
+            setdata(res.data)
+
+         })
+         .catch(error => {
+            console.log(error)
+         })
+    },[AxiosSecure])
     const {user , logout} = UseAuth()
     const [isAdmin] = UseAdmin()
     const handleLogout = () => {
@@ -16,6 +32,10 @@ const Navbar = () => {
         })
 
     }
+   useEffect(()=>{
+    data?.map(items => setpremium(items))
+    console.log(premium)
+   },[data, premium])
     const navLinks = <>
     
     <NavLink
@@ -73,23 +93,16 @@ const Navbar = () => {
         :
        null
     }     
-    {/* <NavLink
-        to="/"
+    { premium?.isPremium === true &&
+        <NavLink
+        to="/PremiumAccount"
         className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "active" : ""
         }
         >
-        Premium artcles
-        </NavLink>; */}
-        {/* <NavLink
-        to="/subscription"
-        className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
-        }
-        >
-        Dashboard
-        </NavLink>; */}
-
+       <li className="text-base font-semibold"><a>Premium Articles</a></li>
+        </NavLink>
+}
         {
             user?.email ? <>
             

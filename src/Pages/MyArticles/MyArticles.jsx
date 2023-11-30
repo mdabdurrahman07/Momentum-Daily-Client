@@ -124,7 +124,7 @@ myarticles.map((items , idx) =>   <tr key={items._id}>
 
 
 </>  : items?.approved }</td>
-<td className="text-lg font-medium">{items?.type === 'normal' ? 'No' : items?.type}</td>
+<td className="text-lg font-medium">{items?.type === 'normal' ? 'No' : 'yes'}</td>
 <td className="text-lg font-medium">
    <Link to={`/updateDetails/${items._id}`}>
    <button>

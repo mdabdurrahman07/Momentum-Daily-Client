@@ -20,6 +20,8 @@ import AllPublisher from '../DashboardPages/AllPublisher'
 import AllArticlesList from '../DashboardPages/AllArticlesList'
 import UpdateDetails from "../Pages/UpdateDetails/UpdateDetails";
 import MyArticlesDetails from "../Pages/MyArticlesDetails/MyArticlesDetails";
+import PaymentGateWay from "../Pages/PaymentGateway/PaymentGateWay";
+import Premium from "../Pages/Premium/Premium";
 // import Error from "../Components/Error/Error";
 
 
@@ -38,16 +40,27 @@ import MyArticlesDetails from "../Pages/MyArticlesDetails/MyArticlesDetails";
               element: <PrivateRoutes><AddArticles></AddArticles></PrivateRoutes>
             },
             {
+              path: '/paymentGateway/:id',
+              element: <PrivateRoutes><PaymentGateWay></PaymentGateWay></PrivateRoutes>,
+              loader: () => fetch('http://localhost:5000/plans')
+
+            },
+            {
               path: '/allArticles',
               element: <AllArticles></AllArticles>
             },
             {
               path: '/myArticles',
-              element: <MyArticles></MyArticles>
+              element: <PrivateRoutes><MyArticles></MyArticles></PrivateRoutes>
             },
             {
               path: '/subscription',
+              // make this private
               element: <Subscription></Subscription>
+            },
+            {
+              path: '/PremiumAccount',
+              element: <Premium></Premium>
             },
             {
               path: '/myProfile',
@@ -65,12 +78,12 @@ import MyArticlesDetails from "../Pages/MyArticlesDetails/MyArticlesDetails";
             },
             {
               path: '/updateDetails/:id',
-              element: <UpdateDetails></UpdateDetails>,
+              element: <PrivateRoutes><UpdateDetails></UpdateDetails></PrivateRoutes>,
               loader: () => fetch('http://localhost:5000/allarticles')
             },
             {
               path: '/myarticles/details/:id',
-              element: <MyArticlesDetails></MyArticlesDetails>,
+              element: <PrivateRoutes><MyArticlesDetails></MyArticlesDetails></PrivateRoutes>,
               loader: ({params}) => fetch(`http://localhost:5000/allarticles/${params.id}`)
 
             }
